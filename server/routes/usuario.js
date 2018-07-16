@@ -16,7 +16,7 @@ let limite = req.query.limite || 5;
 limite = Number(limite);
 
 //Entre los corchetes podemos hacer cualquier filtro.
-Usuario.find({estado:false})
+Usuario.find({estado:true})
        .skip(desde)
        .limit(limite)
        .exec((error,usuarios)=>{
@@ -63,9 +63,10 @@ app.put('/usuario/:id',[verificadorToken,verificaAdministrador],(req, res)=> {
 
     let id = req.params.id;
 
+
     let body = _.pick(req.body,['nombre','email','img','role','estado']);
 
-
+    //Lo único que no puedo cambiar es el email, ya que salta la validación de unique.
     Usuario.findByIdAndUpdate(id,body,{new:true,
                                        runValidators:true},(error,usuarioDb)=>{
 

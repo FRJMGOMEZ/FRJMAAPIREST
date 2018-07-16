@@ -31,5 +31,4 @@ else{res.status(401).json({ok:false,
 
 
 
-
 module.exports = {verificadorToken,verificaAdministrador};

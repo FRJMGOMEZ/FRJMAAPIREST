@@ -33,5 +33,11 @@ process.env.CADUCIDAD_TOKEN = {expiresIn:60 * 60 * 24 * 30};
 //================================ TOKEN SEED ======================================//
 //==============================================================================//
 
-
 process.env.TOKEN_SEED =  process.env.TOKEN_SEED || 'seed-desarrollo';
+
+
+
+//================================ GOOGLE-CLIENT-ID ======================================//
+//==============================================================================//
+
+process.env.CLIENT_ID = process.env.CLIENT_ID || '722636808179-ig1ls6mch3cucnug9hfq0k7btn6g46tg.apps.googleusercontent.com'
