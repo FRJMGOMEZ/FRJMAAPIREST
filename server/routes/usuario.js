@@ -58,6 +58,7 @@ app.post('/usuario',[verificadorToken,verificaAdministrador],(req, res)=> {
 
 
 
+
 //Es importante diferenciar entre ruta y parametro.En el caso de abajo, ':id' es el parametro que introducimos.
 app.put('/usuario/:id',[verificadorToken,verificaAdministrador],(req, res)=> {
 

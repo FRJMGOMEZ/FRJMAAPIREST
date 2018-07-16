@@ -31,7 +31,7 @@ app.post('/login', (req,res)=>{
     return res.status(500).json({ok:false,
                                  message: 'Usuario o (contraseña) incorrectos'})}
 
-    let token = jwt.sign({usuario:usuarioDb},process.env.TOKEN_SEED,{expiresIn:60 * 60 * 24 * 30});
+    let token = jwt.sign({usuario:usuarioDb},process.env.TOKEN_SEED,{expiresIn:process.env.CADUCIDAD_TOKEN});
 
     res.json({ok:true,
               usuario:usuarioDb,

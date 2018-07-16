@@ -9,6 +9,7 @@ const path= require('path');
 
 //Las tres funciones de abajo son middlewares. Se ejecutan automáticamente cuando se ejecuta el código
 // parse application/x-www-form-urlencoded
+
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 
@@ -20,11 +21,13 @@ app.use(express.static(path.resolve(__dirname ,'../public')));
 
 app.use(require('./routes/index'))
 
+
+///////// CONEXION CON LA BASE DE DATOS //////////////////
+
 const option = {
     socketTimeoutMS: 30000,
     keepAlive: true,
-    reconnectTries: 30000
-};
+    reconnectTries: 30000};
 
 mongoose.connect(process.env.URLDB,{ useNewUrlParser: true},
 (error,respuesta)=>{
@@ -33,6 +36,8 @@ mongoose.connect(process.env.URLDB,{ useNewUrlParser: true},
 
   else{console.log('Conexion con la base de datos establecida')}})
 
+
+//////// DETERMINAR SERVIDOR (LOCAL/HEROKU) ///////////
 
 app.listen(process.env.PORT,()=>{console.log(`Escuchando puerto ${process.env.PORT}`)})
 
