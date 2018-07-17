@@ -16,6 +16,8 @@ app.get('/categoria',[verificadorToken,verificaAdministrador],(req,res)=>{
   limite = Number(limite);
 
   Categoria.find({})
+         .sort('descripcion')
+         .populate('usuario','nombre email')
          .exec((error,categorias)=>{
 
            if(error){return res.status(400).json({ok:false,
@@ -38,7 +40,7 @@ let id = req.params.id;
 Categoria.findById(id,(error,categoriaDb)=>{
 
   if(error){return res.status(400).json({ok:false,
-                                  message:'No se pudo encontrar la categoria'})}
+                                         message:'No se pudo encontrar la categoria'})}
 
   res.json({categoria:categoriaDb})
 
@@ -55,7 +57,7 @@ let body = req.body;
 let categoria = new Categoria(
                 {nombre:body.nombre,
                  descripcion:body.descripcion,
-                 ID_usuario:req.usuario._id});
+                 usuario:req.usuario._id});
 
 categoria.save((error,categoriaDb)=>{
 
@@ -82,9 +84,7 @@ Categoria.findByIdAndUpdate(id,body,{new:true,
   if(error){return res.status(400).json({ok:false,
                                   message:error})}
 
-  res.json({categoria:categoriaDb})
-                                   })
-                                 })
+  res.json({categoria:categoriaDb})})})
 
 
 //////////  ELIMINAR CATEGORIA   ////////

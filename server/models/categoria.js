@@ -3,7 +3,6 @@ const uniqueValidator = require('mongoose-unique-validator');
 
 let Schema = mongoose.Schema;
 
-
 let categoriaSchema = new Schema({
   nombre:{
     type:String,
@@ -11,13 +10,11 @@ let categoriaSchema = new Schema({
     unique:true},
   descripcion:{
     type:String,
-    required:[true, 'La descripcion es necesaria']
-    },
-  ID_usuario:{
-    type:String,
-    required:true},
+    required:[true, 'La descripcion es necesaria']},
+  usuario:{ type: Schema.Types.ObjectId, ref:'Usuario'},
   items:[]
 })
+
 
 categoriaSchema.plugin(uniqueValidator, ({message: '{PATH} debe de ser unico'}))
 

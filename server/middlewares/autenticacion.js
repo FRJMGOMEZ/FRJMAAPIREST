@@ -14,6 +14,7 @@ if(error){return res.status(401).json({ok:false,
                                        message:error})}
 
 req.usuario = decoded.usuario;
+
 next();})};
 
 /////////////////////////////////////////////////////////////////////////////////////////

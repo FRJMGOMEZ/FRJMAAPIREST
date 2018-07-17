@@ -82,7 +82,7 @@ app.post('/google', async (req,res)=>{
       usuario.password= ':)',
       usuario.save((error,usuarioDb)=>{
         if(error){return res.status(500).json({ok:false,
-                                      error})}
+                                               error})}
         let token = jwt.sign({usuario:usuarioDb},process.env.TOKEN_SEED,{expiresIn:60 * 60 * 24 * 30});
         return res.json({ok:true,
                         usuario:usuarioDb,
