@@ -3,8 +3,6 @@ const app = express();
 const Categoria = require('../models/categoria');
 
 
-
-
 let categorizacion = (req,res,next)=>{
 
 let body = req.body;

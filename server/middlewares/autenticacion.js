@@ -32,4 +32,26 @@ else{res.status(401).json({ok:false,
 
 
 
-module.exports = {verificadorToken,verificaAdministrador};
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////VERIFICAR TOKEN IMG //////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+
+let verificaTokenImg = (req,res,next)=>{
+
+let token = req.query.token;
+
+jwt.verify(token,process.env.TOKEN_SEED,(error,decoded)=>{
+
+if(error){return res.status(401).json({ok:false,
+                                       message:error})}
+
+req.usuario = decoded.usuario;
+
+next();});
+
+}
+
+
+module.exports = {verificadorToken,verificaAdministrador,verificaTokenImg};

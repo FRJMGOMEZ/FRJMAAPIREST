@@ -7,6 +7,9 @@
     <meta name="google-signin-client_id" content="722636808179-ig1ls6mch3cucnug9hfq0k7btn6g46tg.apps.googleusercontent.com">
   </head>
   <body>
+
+    <img src="http://localhost:3000/imagen/usuarios/5b49ce81e1029222fc064439-44.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJBRE1JTl9ST0xFIiwiZXN0YWRvIjpmYWxzZSwiZ29vZ2xlIjpmYWxzZSwiX2lkIjoiNWI0OWNlODFlMTAyOTIyMmZjMDY0NDM5Iiwibm9tYnJlIjoiRnJhbmNpc2NvICIsImVtYWlsIjoiOTg3NjU0MzIxQGdtYWlsLmNvbSIsIl9fdiI6MCwiaW1nIjoiNWI0OWNlODFlMTAyOTIyMmZjMDY0NDM5LTQ0LmpwZyJ9LCJpYXQiOjE1MzI5Njg4NTUsImV4cCI6MTUzMzE0MTY1NX0.kVGZcrWImG9lQGeD1gMLHYN0rq72Rv9cUNXE7kh_M4A">
+
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
     <script>
@@ -29,16 +32,13 @@
         xhr.send('idtoken=' +id_token);}
 
     </script>
-
-
     <a href="#" onclick="signOut();">Sign out</a>
     <script>
       function signOut() {
         var auth2 = gapi.auth2.getAuthInstance();
         auth2.signOut().then(function () {
           console.log('User signed out.');
-        });
-      }
+        });}
     </script>
 
 

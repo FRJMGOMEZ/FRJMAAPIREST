@@ -26,6 +26,7 @@ app.get('/productos',verificadorToken,(req,res)=>{
 
 
 
+
 app.get('/productos/:id',verificadorToken,(req,res)=>{
 
   let id = req.params.id;
@@ -36,6 +37,7 @@ app.get('/productos/:id',verificadorToken,(req,res)=>{
                                            message:'No se pudo encontrar el producto'})}
 
     res.json({producto:productoDb})})})
+
 
 
 
@@ -105,10 +107,10 @@ app.delete('/productos/:id',verificadorToken,(req,res)=>{
       Producto.findByIdAndUpdate(id,nuevoEstado,(error,producto)=>{
 
         if(error){return res.status(500).json({ok:false,
-                                      mensaje:error})}
+                                               menssage:error})}
 
         if(!producto){return res.status(400).json({ok:false,
-                                             message:'El producto no existe'})}
+                                                   message:'El producto no existe'})}
 
        res.json({ok:true,
                  message:`Producto ${producto.nombre} fuera de stock`})})})
